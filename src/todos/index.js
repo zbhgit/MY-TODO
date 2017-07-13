@@ -1,6 +1,3 @@
-import React from 'react'
+import view from './views/todo'
 
-const Todo = () => (
-  <h2>Todo</h2>
-)
-export default Todo
+export {view}

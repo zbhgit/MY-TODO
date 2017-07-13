@@ -1,9 +1,9 @@
 import React from 'react'
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+import {BrowserRouter as Router,Route} from 'react-router-dom'
 
 import SignIn from '../signIn'
 import SignUp from '../signUp'
-import Todo from '../todos'
+import {view as Todo} from '../todos'
 
 class RouterMap extends React.Component {
   render() {

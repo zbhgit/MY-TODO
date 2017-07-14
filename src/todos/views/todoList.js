@@ -1,9 +1,13 @@
 import React from 'react'
-import TodoItem from './todoItem'
+import TodoUndone from './todoUndone'
+import TodoDone from './todoDone'
+import TodoLine from './todoLine'
 const TodoList = ()=> {
   return (
     <div className="todolist">
-      <TodoItem />
+      <TodoUndone />
+      <TodoLine />
+      <TodoDone />      
     </div>
   )
 }

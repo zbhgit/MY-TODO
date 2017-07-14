@@ -8,29 +8,28 @@
       display: block;
       background-color: #fff;
     }
-    p {
-      span {
-        opacity: 1;
-      }
+    span {
+      opacity: 1;
     }
   }
   p {
     width: 130px;
     color: #d4c6c5;
-    span {
-      position: relative;
-      left: 10px;
-      width: 16px;
-      height: 16px;
-      line-height: 16px;
-      text-align: center;
-      border: 1px solid #ccc;
-      border-radius: 7px;
-      background-color: #d8d8d8;
-      color: #cccccc;
-      opacity: 0;
-      transition: opacity 0.2s ease-in-out;
-    }
+  }
+  span {
+    position: absolute;
+    top: 2px;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color: #d8d8d8;
+    color: #cccccc;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
   }
   ul {
     display: none;

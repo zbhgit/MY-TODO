@@ -42,10 +42,10 @@
     &.iconfont {
       color: #fff;
     }
-    &.completed{
+    &.completed {
       background-color: #7ed61f;
       border-color: #7ed61f;
-      color: #fff; 
+      color: #fff;
     }
   }
   .text {
@@ -63,10 +63,20 @@
       margin-left: 3px;
       width: 10px;
       height: 10px;
-      background-color: #f8a718;
-      border-radius: 50%; 
+      border-radius: 50%;
+      &.normal {
+        background-color: #5ea6fa;
+      }
+      &.important {
+        background-color: #f8a32c;
+      }
+      &.urgent {
+        background-color: #f21d33;
+      }
+      &.someday {
+        background-color: #cccccc;
+      }
     }
-    
   }
   .btn {
     position: absolute;

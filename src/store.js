@@ -1,6 +1,7 @@
 import {createStore,combineReducers,applyMiddleware,compose} from 'redux'
 
 import {reducer as todoReducer} from './todos'
+import {reducer as signUpreducer} from './signUp'
 
 import Perf from 'react-addons-perf'
 import immutable from 'redux-immutable-state-invariant'
@@ -10,7 +11,8 @@ const win = window
 win.Perf = Perf
 
 const reducer = combineReducers({
-  todos: todoReducer
+  todos: todoReducer,
+  userinfo: signUpreducer
 })
 
 const middlewares = []

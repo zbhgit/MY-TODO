@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes'
 
-export default(state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case actionTypes.ADD_TODO:
       {
@@ -38,7 +38,6 @@ export default(state = [], action) => {
       {
         return state.map((todoItem) => {
           if (todoItem.id === action.id) {
-            console.log(action)
             return {
               ...todoItem,
               severity: action.value

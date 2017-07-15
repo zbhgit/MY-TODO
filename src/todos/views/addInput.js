@@ -5,8 +5,8 @@ import './style/addInput.scss'
 class AddInput extends React.Component {
   constructor(props) {
     super(props);
-    this.onHandaleSubmit = this
-      .onHandaleSubmit
+    this.onHandleSubmit = this
+      .onHandleSubmit
       .bind(this)
     this.onHandleChange = this
       .onHandleChange
@@ -15,7 +15,7 @@ class AddInput extends React.Component {
       value: ''
     };
   }
-  onHandaleSubmit(event) {
+  onHandleSubmit(event) {
     event.preventDefault()
     const value = this.state.value
     if (!value.trim()) {
@@ -34,7 +34,7 @@ class AddInput extends React.Component {
   }
   render() {
     return (
-      <form className="add-input" onSubmit={this.onHandaleSubmit}>
+      <form className="add-input" onSubmit={this.onHandleSubmit}>
         <input
           type="text"
           placeholder="Add a task"

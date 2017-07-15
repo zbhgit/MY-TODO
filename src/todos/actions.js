@@ -6,7 +6,7 @@ export const addTodo = (text) => ({
   completed: false,
   id: nextTodoId++,
   text: text,
-  severity: 'important'
+  severity: 'normal'
 })
 
 export const toggleTodo = (id) => ({

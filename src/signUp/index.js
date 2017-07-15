@@ -1,6 +1,3 @@
-import React from 'react'
+import view from './views/signUp'
 
-const SignUp = () => (
-  <h2>signUp</h2>
-)
-export default SignUp
+export {view}

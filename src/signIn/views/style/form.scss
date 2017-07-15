@@ -1,0 +1,40 @@
+.signInForm {
+  margin-top: 20px;
+  width: 100%;
+  .to-sign-up {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #b9c2c7;
+    font-style: italic;
+    font-weight: 700;
+    text-decoration: underline;
+    &:hover {
+      color: #f51839;
+    }
+  }
+  button {
+    margin-top: 30px;
+    width: 240px;
+    background-color: #fff;
+    line-height: 56px;
+    color: #58648c;
+    border: none;
+    border-radius: 28px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+    cursor: pointer;
+    .iconfont {
+      position: relative;
+      left: 30px;
+      color: #fe80af;
+    }
+  }
+  > p {
+    margin-top: 30px;
+    color: #a6afc0;
+    span {
+      color: #606a8d;
+      font-weight: 400;
+    }
+  }
+}

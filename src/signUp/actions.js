@@ -28,7 +28,7 @@ export const addUser = (email,username,password) => {
     user.signUp().then(function (response) {
       const email = response.attributes.email
       const username= response.attributes.username
-      dispatch(addUserSuccess(email,username))
+      dispatch(addUserSuccess(email,username))      
     }, function (error) {
       dispatch(addUserError(error.code))
     })

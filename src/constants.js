@@ -1,6 +1,6 @@
 const SEVERITY =['normal','important','urgent','someday']
-const SIGNIN = 'signIn'
-const SIGNUP = 'signUp'
+const SIGNIN = 'loading'
+const SIGNUP = 'loading'
 const INIT = 'init'
 const SUCCESS = 'success'
 const ERROR = 'error'

@@ -4,8 +4,9 @@ import CommonInput from '../../components/commonInput'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {addUser} from '../actions'
-// import signUp from '../../api/signUp'
 
+// import signUp from '../../api/signUp'
+import {push} from 'react-router-redux'
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -15,11 +16,23 @@ class SignUpForm extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.onHandleClick = this.onHandleClick.bind(this)
     this.onHandleSubmit = this.onHandleSubmit.bind(this)
+    this.urlPush = this.urlPush.bind(this)
     this.state = {
       email: '',
       user: '',
       password: ''
     };
+  }
+  componentDidUpdate() {
+    if(this.props.status === 'success') {
+      this.urlPush()
+    }
+  }
+
+  // 登录成功后跳转
+
+  urlPush() {
+    this.props.onUrlPush('/todo')
   }
   onHandleSubmit() {
     console.log('test')
@@ -52,7 +65,7 @@ class SignUpForm extends React.Component {
   render() { 
     return (
       <form className="signInForm" onSubmit={this.onHandleSubmit}>
-        <Link className='to-sign-in' to='/signin'>Sign In</Link> 
+        <a onClick={this.urlClick} className='to-sign-in' to='/signin'>Sign In</a> 
         <input type="text"/>
         <CommonInput 
         title={"email"}
@@ -93,6 +106,9 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     handleSubmit: (email,username,password) => {
       dispatch(addUser(email,username,password))
+    },
+    onUrlPush: (url) => {
+      dispatch(push(url))
     }
   }
 }

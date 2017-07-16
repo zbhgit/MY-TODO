@@ -21,7 +21,6 @@ class SignInForm extends React.Component {
   }
   // button点击登录事件
   handleClick(event){
-    console.log('enter')
     event.preventDefault()
     let username = this.state.user
     let password = this.state.password
@@ -32,7 +31,6 @@ class SignInForm extends React.Component {
   successFn(response){
     let email = response.attributes.email
     let username= response.attributes.username
-    console.log(email,username)
     this.props.handleSignIn(email,username)    
   }
   // 登录失败事件
@@ -77,7 +75,6 @@ class SignInForm extends React.Component {
 }
 
 const addUser = actions.addUser
-console.log(addUser)
 const mapDispatchToProps = (dispatch)=>{
   return {
     handleSignIn: (email,username) => {

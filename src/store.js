@@ -6,6 +6,8 @@ import {reducer as signUpreducer} from './signUp'
 import Perf from 'react-addons-perf'
 import immutable from 'redux-immutable-state-invariant'
 
+import thunkMiddleware from 'redux-thunk'
+
 const win = window
 
 win.Perf = Perf
@@ -15,7 +17,7 @@ const reducer = combineReducers({
   userinfo: signUpreducer
 })
 
-const middlewares = []
+const middlewares = [thunkMiddleware]
 if (process.env.NODE_ENV !== 'production') {
   middlewares.push(immutable());
 }

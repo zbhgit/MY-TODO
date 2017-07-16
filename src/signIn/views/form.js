@@ -1,9 +1,10 @@
 import React from 'react'
 import './style/form.scss'
 import CommonInput from '../../components/commonInput'
+import CommonButton from '../../components/button'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import signIn from '../../api/signIn'
+// import signIn from '../../api/signIn'
 import {actions} from '../../signUp'
 
 class SignInForm extends React.Component {
@@ -12,30 +13,16 @@ class SignInForm extends React.Component {
     this.handleUserChange = this.handleUserChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    this.successFn = this.successFn.bind(this)
-    this.errorFn = this.errorFn.bind(this)
     this.state = {
       user: '',
       password: ''
     };
   }
   // button点击登录事件
-  handleClick(event){
-    event.preventDefault()
+  handleClick(){
     let username = this.state.user
     let password = this.state.password
-    signIn(username,password,this.successFn,this.errorFn)
-    
-  }
-  // 登录成功事件
-  successFn(response){
-    let email = response.attributes.email
-    let username= response.attributes.username
-    this.props.handleSignIn(email,username)    
-  }
-  // 登录失败事件
-  errorFn(error){
-    console.log(error)
+    this.props.handleSignIn(username,password)    
   }
   // 监听username值
   handleUserChange(value) {
@@ -67,20 +54,32 @@ class SignInForm extends React.Component {
         value={this.state.password}
         handleChange={this.handlePasswordChange}
         />
-        <button onClick={this.handleClick}>SIGN UP NOW <span className="iconfont icon-right"></span> </button>
+        {
+          (this.props.status === 'error' || this.props.status === "success")? <p className="remind">提醒：{this.props.status}</p> : ''
+        }
+        <CommonButton 
+          text={"SIGN IN"}
+          handleClick={this.handleClick}
+          status={this.props.status}
+        />
         <p>Fogot password? <span>Reset</span></p>
       </form>
     )
   }
 }
 
-const addUser = actions.addUser
+const userSignIn = actions.userSignIn
+
+const mapStateToProps = (state) => {
+  return {
+    status: state.userinfo.status
+  }
+}
 const mapDispatchToProps = (dispatch)=>{
   return {
-    handleSignIn: (email,username) => {
-      console.log('in')
-      dispatch(addUser(email,username))
+    handleSignIn: (username,password) => {
+      dispatch(userSignIn(username,password))
     }
   }
 }
-export default connect(null, mapDispatchToProps)(SignInForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm)

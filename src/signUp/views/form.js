@@ -76,7 +76,7 @@ class SignUpForm extends React.Component {
         handleChange={this.handlePasswordChange}
         />
         {
-          this.props.status === 'error' ? <p>提醒：{this.props.status}</p> : ''
+          (this.props.status === 'error' || this.props.status === "success")? <p className="remind" >提醒：{this.props.status}</p> : ''
         }    
         <button className="button" onClick={this.onHandleClick}>SIGN UP NOW <span className="iconfont icon-right"></span> </button>
       </form>

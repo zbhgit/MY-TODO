@@ -34,3 +34,18 @@ export const addUser = (email,username,password) => {
     })
   }
 }
+
+export const userSignIn = (username,password) => {
+  return (dispatch) => {
+    dispatch(addUserStart())
+    AV.User.logIn(username,password).then((response)=>{
+      const email = response.attributes.email
+      const username= response.attributes.username
+      dispatch(addUserSuccess(email,username))
+  },(error)=>{
+      dispatch(addUserError(error.code))
+  })
+  }
+}
+
+ 

@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 // import signIn from '../../api/signIn'
 import {actions} from '../../signUp'
+import {push} from 'react-router-redux'
+
 
 class SignInForm extends React.Component {
   constructor(props) {
@@ -17,6 +19,17 @@ class SignInForm extends React.Component {
       user: '',
       password: ''
     };
+  }
+  componentDidUpdate() {
+    if(this.props.status === 'success') {
+      this.urlPush()
+    }
+  }
+
+  // 登录成功后跳转
+
+  urlPush() {
+    this.props.onUrlPush('/todo')
   }
   // button点击登录事件
   handleClick(){
@@ -79,6 +92,9 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     handleSignIn: (username,password) => {
       dispatch(userSignIn(username,password))
+    },
+    onUrlPush: () => {
+      dispatch(push('/todo'))
     }
   }
 }

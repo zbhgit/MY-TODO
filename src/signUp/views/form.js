@@ -65,7 +65,7 @@ class SignUpForm extends React.Component {
   render() { 
     return (
       <form className="signInForm" onSubmit={this.onHandleSubmit}>
-        <a onClick={this.urlClick} className='to-sign-in' to='/signin'>Sign In</a> 
+        <Link className='to-sign-in' to='/signin'>Sign In</Link> 
         <input type="text"/>
         <CommonInput 
         title={"email"}

@@ -1,11 +1,11 @@
 import React from 'react'
 import TodoItem from './todoItem'
 import {connect} from 'react-redux'
-import {toggleTodo, removeTodo,removeAllDoneTodo} from '../actions'
+import {removeAllDoneTodo,changeKeyValue} from '../actions'
 import {CSSTransitionGroup} from 'react-transition-group'
 import TodoLine from './todoLine'
 import './style/todoDone.scss'
-const TodoDone = ({todos, onToggleTodo,onRemoveTodo,onRemoveAllDoneTodo}) => {
+const TodoDone = ({todos, onToggleTodo,onRemoveTodo,onRemoveAllDoneTodo,changeKeyValue}) => {
   const items = todos.map((item) => {
     return <TodoItem
       key={item.id}
@@ -13,13 +13,13 @@ const TodoDone = ({todos, onToggleTodo,onRemoveTodo,onRemoveAllDoneTodo}) => {
       completed={item.completed}
       text={item.text}
       severity={item.severity}
-      toggleTodo={() => onToggleTodo(item.id)}
-      removeTodo={() => onRemoveTodo(item.id)}
+      toggleTodo={() => changeKeyValue(item.id,'completed',!item.completed)}
+      removeTodo={() => changeKeyValue(item.id,'deleted',true)}
       />
   })
   return (
     <div>
-      {todos.length ? <TodoLine  removeAllDoneTodo={()=> onRemoveAllDoneTodo()}/> :''}
+      {todos.length ? <TodoLine  removeAllDoneTodo={()=> onRemoveAllDoneTodo(todos)}/> :''}
       <ul className="doneItem">
       <CSSTransitionGroup
         transitionName="example"
@@ -33,7 +33,7 @@ const TodoDone = ({todos, onToggleTodo,onRemoveTodo,onRemoveAllDoneTodo}) => {
   )
 }
 const selectUndoneTodos = (todos) => {
-  return todos.filter(item => item.completed)
+  return todos.filter(item => (item.completed && !item.deleted))
 }
 
 const mapStateToProps = (state) => {
@@ -43,14 +43,11 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onToggleTodo: (id) => {
-      dispatch(toggleTodo(id))
+    onRemoveAllDoneTodo: (doneTodos)=> {
+      dispatch(removeAllDoneTodo(doneTodos))
     },
-    onRemoveTodo: (id) => {
-      dispatch(removeTodo(id))
-    },
-    onRemoveAllDoneTodo: ()=> {
-      dispatch(removeAllDoneTodo())
+    changeKeyValue: (id,key,value)=>{
+      dispatch(changeKeyValue(id,key,value))
     }
   }
 }

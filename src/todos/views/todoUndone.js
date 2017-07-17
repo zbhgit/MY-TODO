@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {toggleTodo, removeTodo} from '../actions'
+import {changeKeyValue} from '../actions'
 import TodoItem from './todoItem'
 import {CSSTransitionGroup} from 'react-transition-group'
 import './style/todoundone.scss'
-const TodoUndone = ({todos, onToggleTodo, onRemoveTodo}) => {
+const TodoUndone = ({todos, onToggleTodo, onRemoveTodo,changeKeyValue}) => {
   const items = todos.map((item) => {
     return <TodoItem
       key={item.id}
@@ -12,8 +12,8 @@ const TodoUndone = ({todos, onToggleTodo, onRemoveTodo}) => {
       completed={item.completed}
       text={item.text}
       severity={item.severity}
-      toggleTodo={() => onToggleTodo(item.id)}
-      removeTodo={() => onRemoveTodo(item.id)}/>
+      toggleTodo={() => changeKeyValue(item.id,'completed',!item.completed)}
+      removeTodo={() => changeKeyValue(item.id,'deleted',true)}/>
   })
   return (
     <ul className="undoneItem">
@@ -28,7 +28,7 @@ const TodoUndone = ({todos, onToggleTodo, onRemoveTodo}) => {
 }
 
 const selectUndoneTodos = (todos) => {
-  return todos.filter(item => !item.completed)
+  return todos.filter(item => (!item.completed && !item.deleted))
 }
 
 const mapStateToProps = (state) => {
@@ -38,11 +38,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onToggleTodo: (id) => {
-      dispatch(toggleTodo(id))
-    },
-    onRemoveTodo: (id) => {
-      dispatch(removeTodo(id))
+    changeKeyValue: (id,key,value)=>{
+      dispatch(changeKeyValue(id,key,value))
     }
   }
 }

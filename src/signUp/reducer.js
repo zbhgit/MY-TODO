@@ -25,6 +25,9 @@ export default (state = {status: Status.INIT}, action) => {
         status: Status.SIGNUP
       }
     }
+    case actionTypes.USER_LOGOUT: {
+      return {}
+    }
     default:
       return state
   }

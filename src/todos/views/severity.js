@@ -2,19 +2,19 @@ import React, {Component} from 'react'
 import './style/severity.scss'
 import {SEVERITY} from '../../constants'
 import {connect} from 'react-redux'
-import {severityTodo} from '../actions'
+import {changeKeyValue} from '../actions'
 class Severity extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this)
     this.state = {
-      severity: SEVERITY[0]
+      severity: this.props.severity
     };
   }
   handleClick(event) {
     let value = event.target.innerHTML
     let id = this.props.id
-    this.props.onSeverityTodo(id,value)
+    this.props.changeKeyValue(id,'severity',value)
     this.setState({
       severity: event.target.innerHTML
     })
@@ -43,8 +43,8 @@ class Severity extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSeverityTodo: (id,value)=>{
-      dispatch(severityTodo(id,value))
+    changeKeyValue: (id,key,value)=> {
+      dispatch(changeKeyValue(id,key,value))
     }
   }
 }

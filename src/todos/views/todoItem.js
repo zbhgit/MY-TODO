@@ -14,11 +14,10 @@ const TodoItem = (props) => {
           <span className={"point " + severity}></span>
         </p>
         <div className="btn">
-          <span className="iconfont icon-bianji"></span>
           <span className="iconfont icon-delete1" onClick={removeTodo}></span>
         </div>
       </div>
-      <Severity id={id} />
+      <Severity id={id} severity={severity}/>
 
     </li>
   )

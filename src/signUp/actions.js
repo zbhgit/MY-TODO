@@ -16,6 +16,9 @@ export const addUserError = (error)=>({
   type: actionTypes.ADD_USER_ERROR,
   error
 })
+export const userSignOut = ()=>({
+  type: actionTypes.USER_LOGOUT,
+})
 
 
 export const addUser = (email,username,password) => {

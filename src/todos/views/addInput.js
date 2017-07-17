@@ -1,16 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addTodo} from '../actions'
+import {addTodoToLeanCloud} from '../actions'
 import './style/addInput.scss'
 class AddInput extends React.Component {
   constructor(props) {
     super(props);
-    this.onHandleSubmit = this
-      .onHandleSubmit
-      .bind(this)
-    this.onHandleChange = this
-      .onHandleChange
-      .bind(this)
+    this.onHandleSubmit = this.onHandleSubmit.bind(this)
+    this.onHandleChange = this.onHandleChange.bind(this)
     this.state = {
       value: ''
     };
@@ -21,7 +17,7 @@ class AddInput extends React.Component {
     if (!value.trim()) {
       return
     }
-    this.props.onAdd(value)
+    this.props.onAddToLean(value,'normal')
     this.setState({
       value: ''
     })
@@ -47,8 +43,8 @@ class AddInput extends React.Component {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAdd: (text) => {
-      dispatch(addTodo(text))
+    onAddToLean: (text,severity)=>{
+      dispatch(addTodoToLeanCloud(text,severity))
     }
   }
 }

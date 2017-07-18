@@ -1,0 +1,24 @@
+.common-button {
+    margin-top: 30px;
+    width: 240px;
+    background-color: #fff;
+    line-height: 56px;
+    color: #58648c;
+    border: none;
+    border-radius: 28px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: #af27c7;
+      color: #fff;
+      .iconfont {
+        color: #fff;
+      }
+    }
+    .iconfont {
+      position: relative;
+      left: 30px;
+      color: #fe80af;
+    }
+  }

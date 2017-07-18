@@ -9,7 +9,9 @@ import createHistory from 'history/createBrowserHistory'
 import {routerMiddleware, routerReducer} from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 
-export const history = createHistory()
+export const history = createHistory({
+   basename: '/MY-TODO/build'
+})
 const historyMiddleware = routerMiddleware(history)
 
 const win = window

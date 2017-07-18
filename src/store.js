@@ -5,13 +5,11 @@ import {reducer as signUpreducer} from './signUp'
 
 import Perf from 'react-addons-perf'
 import immutable from 'redux-immutable-state-invariant'
-import createHistory from 'history/createBrowserHistory'
+import createHistory from 'history/createHashHistory'
 import {routerMiddleware, routerReducer} from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 
-export const history = createHistory({
-   basename: '/MY-TODO/build'
-})
+export const history = createHistory()
 const historyMiddleware = routerMiddleware(history)
 
 const win = window

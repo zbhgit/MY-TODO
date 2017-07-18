@@ -1,14 +1,18 @@
-### 一步步实现TodoList
+### 一个基于React 全家桶的 TodoList
 
-1. 使用create-react-app初始化环境
+[效果链接](https://zbhgit.github.io/MY-TODO/build)
+
+#### 主要功能
+1. 实现注册，登录等功能
+2. 表单验证
+3. 路由的自动跳转
+4. TodoList增删改查
+
+#### 克隆DEMO到本地运行
+
 ```
-$ npm install create-react-app -g
-$ create-react-app todoList
-$ cd todolist
-$ yarn start 
-```
-运行上面的命令，即可看到浏览器打开了一个新网页，我们需要的react环境搭建好了（npm，yarn等命令自行搜索）
-2. 因为要基于redux，react-router4，所以要安装模块
-```
-$ yarn add redux react-redux react-router-dom
+$ git clone https://github.com/zbhgit/MY-TODO.git
+$ cd MY-TODO
+$ yarn install
+$ yarn start
 ```

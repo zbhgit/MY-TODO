@@ -1,15 +1,6 @@
 {
-  "main.js": "static/js/main.f478e389.js",
-  "main.js.map": "static/js/main.f478e389.js.map",
-  "static\\media\\App.scss": "static/media/App.93ef6bde.scss",
-  "static\\media\\addInput.scss": "static/media/addInput.11749186.scss",
-  "static\\media\\form.scss": "static/media/form.db5cc994.scss",
-  "static\\media\\header.scss": "static/media/header.1cda24a9.scss",
-  "static\\media\\index.scss": "static/media/index.55f61ad6.scss",
-  "static\\media\\severity.scss": "static/media/severity.fe5a1225.scss",
-  "static\\media\\signOut.scss": "static/media/signOut.cc361eef.scss",
-  "static\\media\\todoDone.scss": "static/media/todoDone.a8fcd369.scss",
-  "static\\media\\todoItem.scss": "static/media/todoItem.b11cb6b6.scss",
-  "static\\media\\todoLine.scss": "static/media/todoLine.24ce8612.scss",
-  "static\\media\\todoundone.scss": "static/media/todoundone.e602e22f.scss"
+  "main.css": "static/css/main.16013708.css",
+  "main.css.map": "static/css/main.16013708.css.map",
+  "main.js": "static/js/main.47b02044.js",
+  "main.js.map": "static/js/main.47b02044.js.map"
 }

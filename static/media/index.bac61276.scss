@@ -1,0 +1,39 @@
+
+.input-wrapper {
+    display: block;
+    position: relative;
+    margin-bottom: 15px;
+    padding-top: 20px;
+    input {
+      width: 291px;
+      line-height: 34px;
+      padding-left: 10px;
+      padding-right: 30px;
+      font-size: 14px;
+      border-bottom: 2px solid #98a3b7;
+      background-color: #fff;
+      color: #808aa5;
+    }
+    .iconfont {
+      position: absolute;
+      top: 29px;
+      right: 10px;
+      color: #8b93aa;
+      &.icon-mima {
+        font-weight: 700;
+      }
+    }
+    .desc {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      font-size: 22px;
+      transition: all 0.3s ease-in-out;
+      color: #808aa5;
+      &.active {
+        transform: translateY(-20px);
+        font-size: 14px;
+        color: #bfc2d3;
+      }
+    }
+  }

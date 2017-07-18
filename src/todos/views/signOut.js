@@ -12,8 +12,6 @@ class SignOut extends Component {
   }
   handleClick() {
     AV.User.logOut()
-    const currentUser = AV.User.current()
-    console.log(currentUser)
     this.props.signOut()
   }
   render() {

@@ -4,6 +4,7 @@ import {ConnectedRouter} from 'react-router-redux'
 import {view as SignIn } from '../signIn'
 import {view as SignUp }from '../signUp'
 import {view as Todo} from '../todos'
+import {view as Reset} from '../reset'
 import {history} from '../store'
 import AV from '../api/leancloud'
 import {push} from 'react-router-redux'
@@ -40,8 +41,9 @@ class RouterMap extends React.Component {
       <ConnectedRouter history={history}>
         <div>
           <Route exact path="/todo" component={Todo}/>
-          <Route exact path="/signIn" component={SignIn}/>
-          <Route exact path="/signUp" component={SignUp}/>
+          <Route  path="/signIn" component={SignIn}/>
+          <Route  path="/signUp" component={SignUp}/>
+          <Route  path="/reset" component={Reset}/>
         </div>
       </ConnectedRouter>    
     )

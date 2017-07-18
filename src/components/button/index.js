@@ -12,7 +12,7 @@ export default class CommonButton extends Component {
     this.props.handleClick()
   }
   render() {
-    const {text,status} = this.props
+    const {text} = this.props
     return (
       
       <button className="common-button" onClick={this.handleClick}>{text}

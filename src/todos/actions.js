@@ -76,7 +76,6 @@ export const changeKeyValue = (id, key, obj)=>{
 
 export const removeAllDoneTodo = (todos) => {
   return (dispatch)=> {
-    console.log(todos)
     todos.forEach((item)=>{
       dispatch(changeKeyValue(item.id,'deleted',true))
     })

@@ -4,9 +4,18 @@ import CommonInput from '../../components/commonInput'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {addUser} from '../actions'
+import ErroRemind from '../../components/errorComponent'
 
 // import signUp from '../../api/signUp'
 import {push} from 'react-router-redux'
+
+const emailReg = /^\w+@[\w-]+\.\w+(\.\w+)?$/
+const userReg = /\w{3,}/
+const passwordReg = /\w{6,10}/
+
+
+
+
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -16,11 +25,16 @@ class SignUpForm extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.onHandleClick = this.onHandleClick.bind(this)
     this.onHandleSubmit = this.onHandleSubmit.bind(this)
+    this.emailHandleBlur = this.emailHandleBlur.bind(this)
+    this.userHandleBlur = this.userHandleBlur.bind(this)
+    this.passwordHandleBlur = this.passwordHandleBlur.bind(this)
+    this.buttonAble = this.buttonAble.bind(this)
     this.urlPush = this.urlPush.bind(this)
     this.state = {
       email: '',
       user: '',
-      password: ''
+      password: '',
+      error: null
     };
   }
   componentDidUpdate() {
@@ -42,6 +56,12 @@ class SignUpForm extends React.Component {
     let username = this.state.user
     let email = this.state.email
     let password = this.state.password
+    if((username.trim() === '')||(email.trim()==='')||(password.trim()==='')){
+      this.setState({
+        error: 104
+      })
+      return
+    }
     this.props.handleSubmit(email,username,password)    
   }
   // 监听email值变化
@@ -49,30 +69,94 @@ class SignUpForm extends React.Component {
     this.setState({
       email: value
     })
+    this.buttonAble()    
+  }
+  //失去焦点检测email的值是否符合要求
+  emailHandleBlur() {
+    let email = this.state.email
+    if(!email.trim()) {
+      this.setState({
+        error: 104
+      })
+    }
+    if(emailReg.test(email)=== false) {
+      this.setState({
+        error: 103
+      })
+    }
+    this.buttonAble()    
   }
   // 监听user值变化
   handleUserChange(value) {
     this.setState({
       user: value
     })
+    this.buttonAble()    
+  }
+    //失去焦点检测user的值是否符合要求
+  userHandleBlur() {
+    let user = this.state.user
+    if(!user.trim()) {
+      this.setState({
+        error: 105
+      })
+    }
+    if(userReg.test(user)=== false) {
+      this.setState({
+        error: 100
+      })
+    }
+    this.buttonAble()
+    
   }
   // 监听password变化
   handlePasswordChange(value) {
     this.setState({
       password: value
     })
+    this.buttonAble()    
   }
+//失去焦点检测user的值是否符合要求
+  passwordHandleBlur() {
+    let password = this.state.password
+    if(!password.trim()) {
+      this.setState({
+        error: 106
+      })
+    }
+    if(passwordReg.test(password)=== false) {
+      this.setState({
+        error: 102
+      })
+    }
+    this.buttonAble()
+  }
+  //判断所有表单合格，启用提交按钮
+  buttonAble(){
+    let email = this.state.email
+    let user = this.state.user
+    let password = this.state.password
+    
+    if(emailReg.test(email) && userReg.test(user)&& passwordReg.test(password)){
+      this.setState({
+        error: null
+      })
+    }
+  }
+  
+
+  //更新错误码
   render() { 
     return (
       <form className="signInForm" onSubmit={this.onHandleSubmit}>
         <Link className='to-sign-in' to='/signin'>Sign In</Link> 
-        <input type="text"/>
         <CommonInput 
         title={"email"}
         iconType={"icon-email-copy"}
         inputType={"text"}
         value={this.state.email}
         handleChange={this.handleEmailChange}
+        handleBlurCheck = {this.emailHandleBlur}
         />
         <CommonInput 
         title={"user"}
@@ -80,6 +164,7 @@ class SignUpForm extends React.Component {
         inputType={"text"}
         value={this.state.user}
         handleChange={this.handleUserChange}
+        handleBlurCheck = {this.userHandleBlur}        
         />
         <CommonInput 
         title={"password"}
@@ -87,11 +172,15 @@ class SignUpForm extends React.Component {
         inputType={"password"}
         value={this.state.password}
         handleChange={this.handlePasswordChange}
+        handleBlurCheck = {this.passwordHandleBlur}        
         />
+         {
+          (this.props.status === 'init' && this.state.error)? <ErroRemind  error={this.state.error} /> : ''
+        } 
         {
-          (this.props.status === 'error' || this.props.status === "success")? <p className="remind" >提醒：{this.props.status}</p> : ''
+          (this.props.status === 'error' && this.props.error)? <ErroRemind  error={this.props.error} /> : ''
         }    
-        <button className="button" onClick={this.onHandleClick}>SIGN UP NOW <span className="iconfont icon-right"></span> </button>
+        <button disabled={this.state.error ? 'disabled': ''} className="button" onClick={this.onHandleClick}>SIGN UP NOW <span className="iconfont icon-right"></span> </button>
       </form>
     )
   }
@@ -99,7 +188,8 @@ class SignUpForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    status: state.userinfo.status
+    status: state.userinfo.status,
+    error: state.userinfo.error
   }
 }
 const mapDispatchToProps = (dispatch)=>{

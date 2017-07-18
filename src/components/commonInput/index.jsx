@@ -21,6 +21,7 @@ export default class CommonInput extends Component {
     })
   }
   handleBlur(event){
+    this.props.handleBlurCheck()
     if(event.target.value.trim()) {
       return
     }

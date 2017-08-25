@@ -14,17 +14,17 @@
 
 1. 确定项目结构。选择按功能组织的目录结构，也就是把完成同一应用功能的代码放在一个目录下。如下图
   
-  ![目录结构](./redemeImg/catalog.png)
+  ![目录结构](./redemeImg/catalog.png) 
 
 2. store结构设计
   
-  ![store设计](./redemeImg/store.png)
+  ![store设计](./redemeImg/store.png) 
 
   todo详情状态
   
-  ![todo详情状态](./redemeImg/todo.png)
+  ![todo详情状态](./redemeImg/todo.png) 
 
--------------
+
 
 3. 使用create-react-app搭建环境，并添加sass文件支持，更改webpack配置文件。
   ```

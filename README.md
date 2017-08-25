@@ -20,9 +20,9 @@
   
   ![store设计](./redemeImg/store.png) 
 
- todo详情状态
-  
-  ![todo详情状态](./redemeImg/todo.png) 
+    todo详情状态
+    
+    ![todo详情状态](./redemeImg/todo.png) 
 
 * 使用create-react-app搭建环境，并添加sass文件支持，更改webpack配置文件。
   ```

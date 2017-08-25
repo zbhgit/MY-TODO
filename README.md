@@ -24,6 +24,8 @@
   
   ![todo详情状态](./redemeImg/todo.png)
 
+-------------
+
 3. 使用create-react-app搭建环境，并添加sass文件支持，更改webpack配置文件。
   ```
     // 首先eject项目环境,此过程不可逆，慎用，此外官方也有相应的解决方案

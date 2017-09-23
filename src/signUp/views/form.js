@@ -151,7 +151,7 @@ class SignUpForm extends React.Component {
       <form className="signInForm" onSubmit={this.onHandleSubmit}>
         <Link className='to-sign-in' to='/signin'>Sign In</Link> 
         <CommonInput 
-        title={"email"}
+        title={"Email"}
         iconType={"icon-email-copy"}
         inputType={"text"}
         value={this.state.email}
@@ -159,7 +159,7 @@ class SignUpForm extends React.Component {
         handleBlurCheck = {this.emailHandleBlur}
         />
         <CommonInput 
-        title={"user"}
+        title={"User"}
         iconType={"icon-user"}
         inputType={"text"}
         value={this.state.user}
@@ -167,7 +167,7 @@ class SignUpForm extends React.Component {
         handleBlurCheck = {this.userHandleBlur}        
         />
         <CommonInput 
-        title={"password"}
+        title={"Password"}
         iconType={"icon-mima"}
         inputType={"password"}
         value={this.state.password}

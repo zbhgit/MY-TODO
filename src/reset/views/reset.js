@@ -62,7 +62,7 @@ class ResetPassword extends Component {
           title={"Reset Password"}
           description={"You can change your password!"}/>
          <CommonInput 
-          title={"email"}
+          title={"Email"}
           iconType={"icon-email-copy"}
           inputType={"text"}
           value={this.state.email}

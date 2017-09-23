@@ -60,7 +60,7 @@ class SignInForm extends React.Component {
       <form className="signInForm">
         <Link  className="to-sign-up" to="/signup">Sign UP</Link>
         <CommonInput 
-        title={"user"}
+        title={"User"}
         iconType={"icon-user"}
         inputType={"text"}
         value={this.state.user}
@@ -68,7 +68,7 @@ class SignInForm extends React.Component {
         handleBlurCheck = {this.userHandleBlur}
         />
         <CommonInput 
-        title={"password"}
+        title={"Password"}
         iconType={"icon-mima"}
         inputType={"password"}
         value={this.state.password}
